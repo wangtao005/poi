@@ -94,7 +94,7 @@ public class ExcelFileUtils {
                         try {
                             Date date = DateUtil.parseYYYYMMDDDate(cellValue);
                             field.set(data, date);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             str.append("第" + i + "行,<" + headList.get(j) + ">日期转换出错,请按正确格式填写;");
                             e.printStackTrace();
                         }
@@ -229,11 +229,12 @@ public class ExcelFileUtils {
 
     /**
      * 下载模板
+     *
      * @param request
      * @param response
      * @param fileName 下载文件需要取名
-     * @param flag      xml标记id
-     * @param xmlPath   xml地址
+     * @param flag     xml标记id
+     * @param xmlPath  xml地址
      */
     public static void fileDownload(HttpServletRequest request, HttpServletResponse response, String fileName, String flag, String xmlPath) {
         String path = request.getSession().getServletContext().getRealPath("") + fileName + ".xls";
