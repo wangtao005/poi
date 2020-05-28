@@ -6,6 +6,8 @@ import com.example.poi.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TestServiceImpl implements TestService {
     @Autowired
@@ -17,6 +19,11 @@ public class TestServiceImpl implements TestService {
         return save;
     }
 
+    @Override
+    public List<Test> getData() {
+        List<Test> list = dao.findAll();
+        return list;
+    }
 
 
 }

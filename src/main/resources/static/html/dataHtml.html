@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: auto" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>list</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/boot.js"></script>
+    <link rel="stylesheet" href="../common/layui/css/layui.css">
+
+</head>
+<body>
+
+<table id="demo" lay-filter="test"></table>
+
+<script src="../common/layui/layui.all.js"></script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            ,height: 312
+            ,url: rootPath +'/getData' //数据接口
+            ,method: 'post'
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'city', title: '城市', width:80}
+                ,{field: 'sign', title: '签名', width: 177}
+                ,{field: 'experience', title: '积分', width: 80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true}
+                ,{field: 'classify', title: '职业', width: 80}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true}
+            ]]
+        });
+
+    });
+</script>
+</body>
+</html>

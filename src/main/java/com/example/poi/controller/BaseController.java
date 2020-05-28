@@ -2,6 +2,7 @@ package com.example.poi.controller;
 
 
 import com.example.poi.common.ExcelFileUtils;
+import com.example.poi.entity.ReturnData;
 import com.example.poi.entity.Test;
 import com.example.poi.service.TestService;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +33,16 @@ public class BaseController {
     @RequestMapping("/")
     public String index(Model model, HttpServletResponse response, HttpServletRequest request) {
         model.addAttribute("name", "simonsfan");
-        return "/html/index";
+        return "html/index";
+    }
+
+    @RequestMapping("/getData")
+    @ResponseBody
+    public ReturnData getData( HttpServletResponse response, HttpServletRequest request) {
+        List<Test> list = service.getData();
+        ReturnData data = new ReturnData();
+        data.setData(list);
+        return data;
     }
 
 
@@ -54,12 +65,15 @@ public class BaseController {
             return map;
         }
         try {
+            List<Test> list = new ArrayList<>();
+
             Test entity = new Test();
             List<Object> objectList = ExcelFileUtils.fileUpload(file, entity, "text", "static/xml/textXml.xml");
             for (int i = 0; i < objectList.size(); i++) {
-                Object o = objectList.get(i);
-                System.out.println(o);
+                Test test = (Test) objectList.get(i);
+                list.add(test);
             }
+
 
 //            int num = message.indexOf("true");
 //            if (num > -1) {
