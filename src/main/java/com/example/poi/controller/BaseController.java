@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *  前端控制器
+ * 前端控制器
  */
 @Controller
 @RequestMapping("/")
@@ -29,11 +29,10 @@ public class BaseController {
     private TestService service;
 
     @RequestMapping("/")
-    public String index(Model model, HttpServletResponse response,HttpServletRequest request) {
+    public String index(Model model, HttpServletResponse response, HttpServletRequest request) {
         model.addAttribute("name", "simonsfan");
         return "/html/index";
     }
-
 
 
     /**
@@ -58,7 +57,7 @@ public class BaseController {
             Test entity = new Test();
             List<Object> objectList = ExcelFileUtils.fileUpload(file, entity, "text", "static/xml/textXml.xml");
             for (int i = 0; i < objectList.size(); i++) {
-                Object o =  objectList.get(i);
+                Object o = objectList.get(i);
                 System.out.println(o);
             }
 
@@ -86,7 +85,8 @@ public class BaseController {
     @RequestMapping("/fileDownload")
     @ResponseBody
     public void fileDownload(HttpServletRequest request, HttpServletResponse response) {
-        ExcelFileUtils.fileDownload(request,response,"公司职工","text","static/xml/textXml.xml");
+
+        ExcelFileUtils.fileDownload(request, response, "公司职工", "text", "static/xml/textXml.xml");
     }
 
 }
