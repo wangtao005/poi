@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: auto" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/boot.js"></script>
+    <link rel="stylesheet" href="common/layui/css/layui.css">
+
+</head>
+
+<body>
+<div style="overflow:auto;height: 100%">
+    <div class="layui-upload">
+        <button type="button" class="layui-btn" id="oneFile" data-multifile="false"><i class="layui-icon">&#xe67c;</i>上传文件</button>
+    </div>
+    <div class="layui-load" style="margin-top: 30px">
+        <button type="button" class="layui-btn" id="downLoad" onclick="fileDownload()" data-multifile="false"><i class="layui-icon layui-icon-download-circle"></i>下载模板</button>
+    </div>
+</div>
+</body>
+<script src="common/layui/layui.all.js"></script>
+<script>
+function onCancel() {
+    CloseWindow("cancel");
+}
+
+function CloseWindow(action) {
+    if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action); else window.close();
+}
+
+function fileUpload() {
+    $('#oneFile').trigger('click');
+}
+
+function fileDownload() {
+    window.location.href = rootPath + '/fileDownload';
+}
+
+/*上传位置开始*/
+var messageidone;
+var fileData = {};
+$(document).ready(function () {
+    layui.use('upload', function () {
+        var upload = layui.upload;
+        var filetype = $("#oneFile").attr("data-type");
+        /*执行实例*/
+        var uploadInst = upload.render({
+            elem: '#oneFile', /*绑定元素*/ url: rootPath + '/fileUpload', accept: "file", /*指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）*/ multiple: false, /*是否允许多文件上传*/ exts: filetype ? filetype : "xls|xlsx", before: function (obj) {
+                obj.preview(function (index, file, result) {
+                    var fileName = file.name;
+                    $("#fileName").text(fileName);
+                });
+            }, done: function (res, index, upload) {
+                /*上传完毕回调*/
+                if (res) {
+                    if (res.status) {
+                        mini.alert(res.msg, "提示");
+                        onCancel();
+                    } else {
+                        mini.alert(res.msg, "提示");
+                    }
+                } else {/*	  openAlert("上传失败");*/
+                }
+            }, error: function () {/*请求异常回调*/
+            }
+        });
+    });
+});
+
+
+</script>
+</html>

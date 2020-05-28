@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <part id="text" entityPath="com.example.poi.entity.Test">
+        <item id="name" name="name" value="姓名" type="String" required="true"></item>
+        <item id="sex" name="sex" value="性别" type="String" required="false"></item>
+        <item id="age" name="age" value="年龄" type="Integer" required="true"></item>
+        <item id="birthday" name="birthday" value="生日" type="Date" required="false"></item>
+        <item id="numberCode" name="numberCode" value="工号" type="String" required="false"></item>
+        <item id="station" name="station" value="工位" type="String" required="false"></item>
+    </part>
+</root>
