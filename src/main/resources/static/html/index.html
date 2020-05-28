@@ -60,10 +60,8 @@ $(document).ready(function () {
                 /*上传完毕回调*/
                 if (res) {
                     if (res.status) {
-                        mini.alert(res.msg, "提示");
                         onCancel();
                     } else {
-                        mini.alert(res.msg, "提示");
                     }
                 } else {/*	  openAlert("上传失败");*/
                 }

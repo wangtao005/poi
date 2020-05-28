@@ -71,7 +71,7 @@ public class BaseController {
             List<Object> objectList = ExcelFileUtils.fileUpload(file, entity, "text", "static/xml/textXml.xml");
             for (int i = 0; i < objectList.size(); i++) {
                 Test test = (Test) objectList.get(i);
-                list.add(test);
+                service.save(test);
             }
 
 

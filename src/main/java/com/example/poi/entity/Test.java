@@ -22,14 +22,28 @@ public class Test {
     private String sex;/*INT(11) NULL DEFAULT NULL COMMENT '性别',*/
 
     @Column(name = "age")
-    private Integer age;/*INT(11) NULL DEFAULT NULL COMMENT '学生年龄',*/
+    private Integer age;
 
     @Temporal(TemporalType.DATE)
-    private Date birthday;/*INT(11) NULL DEFAULT NULL COMMENT '学生年龄',*/
+    private Date birthday;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;/*INT(11) NULL DEFAULT NULL COMMENT '学生年龄',*/
+    private Date createTime;
 
+    @Column(name = "sign",length = 50)//签名
+    private String sign;
+
+    @Column(name = "experience",length = 50)//积分
+    private String experience;
+
+    @Column(name = "score",length = 50)//评分
+    private String score;
+
+    @Column(name = "classify",length = 50)//职业
+    private String classify;
+
+    @Column(name = "wealth",length = 50)//财富
+    private String wealth;
 }
 
 
