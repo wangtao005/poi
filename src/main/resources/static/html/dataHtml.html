@@ -11,7 +11,11 @@
 
 </head>
 <body>
-
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
 <table id="demo" lay-filter="test"></table>
 
 <script src="../common/layui/layui.all.js"></script>
@@ -22,20 +26,25 @@
         //第一个实例
         table.render({
             elem: '#demo'
-            , height: 312
+            , height: 480
             , url: rootPath + '/getData' //数据接口
             , method: 'post'
-            , page: true //开启分页
-            , cols: [[ //表头
-                {field: 'id', title: 'ID', width: 180, sort: true, fixed: 'left'}
-                , {field: 'name', title: '用户名', width: 180}
-                , {field: 'sex', title: '性别', width: 180, sort: true}
-                , {field: 'birthday', title: '生日', width: 180}
-                , {field: 'sign', title: '签名', width: 177}
-                , {field: 'experience', title: '积分', width: 180, sort: true}
-                , {field: 'score', title: '评分', width: 180, sort: true}
-                , {field: 'classify', title: '职业', width:180}
-                , {field: 'wealth', title: '财富', width: 135, sort: true}
+            ,page: true //开启分页
+            ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,totalRow: true //开启合计行
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'},
+                {title: '序号', width: 80, type: "numbers", align: "center",fixed: 'left'},
+                {field: 'id', title: 'ID', width: 100, sort: true,  align: "center",hide:"true"},
+                {field: 'name', title: '用户名', width: 180},
+                {field: 'sex', title: '性别', width: 180, sort: true, align: "center"},
+                {field: 'birthday', title: '生日', width: 180, align: "center"},
+                {field: 'sign', title: '签名', width: 250},
+                {field: 'experience', title: '积分', width: 180, sort: true, align: "center"},
+                {field: 'score', title: '评分', width: 180, sort: true, align: "center"},
+                {field: 'classify', title: '职业', width: 180, align: "center"},
+                {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
+                {title: '操作',fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
         });
 
