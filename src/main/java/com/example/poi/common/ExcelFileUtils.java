@@ -81,10 +81,6 @@ public class ExcelFileUtils {
                             cellValue = df.format(numericCellValue);
                         }
                     }
-//                    String tital = headList.get(j);
-//                    if (tital.indexOf("序号") > -1) {
-//                        continue;
-//                    }
                     if (!StringUtils.isNotBlank(cellValue)) {
                         continue;
                     }
