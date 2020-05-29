@@ -33,16 +33,17 @@
             ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             ,totalRow: true //开启合计行
             ,cols: [[ //表头
-                {type: 'checkbox', fixed: 'left'},
+                {type: 'checkbox', fixed: 'left',totalRowText: '合计：'},
                 {title: '序号', width: 80, type: "numbers", align: "center",fixed: 'left'},
                 {field: 'id', title: 'ID', width: 100, sort: true,  align: "center",hide:"true"},
                 {field: 'name', title: '用户名', width: 180},
                 {field: 'sex', title: '性别', width: 180, sort: true, align: "center"},
                 {field: 'birthday', title: '生日', width: 180, align: "center"},
                 {field: 'sign', title: '签名', width: 250},
-                {field: 'experience', title: '积分', width: 180, sort: true, align: "center"},
-                {field: 'score', title: '评分', width: 180, sort: true, align: "center"},
+                {field: 'experience', title: '积分', width: 180, sort: true, align: "center", totalRow: true},
+                {field: 'score', title: '评分', width: 180, sort: true, align: "center", totalRow: true},
                 {field: 'classify', title: '职业', width: 180, align: "center"},
+                {field: 'wealth', title: '财富', width: 135, sort: true, align: "center", totalRow: true},
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
@@ -50,8 +51,7 @@
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
                 {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
-                {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
-                {field: 'wealth', title: '财富', width: 135, sort: true, align: "center"},
+                {field: 'wealth', title: '财富',  sort: true, align: "center"},
                 {title: '操作',fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
         });
