@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow: auto" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" style="overflow: auto;" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,7 +16,7 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<table id="demo" lay-filter="test"></table>
+<table id="demo" lay-filter="test" style="height: 100%"></table>
 
 <script src="../common/layui/layui.all.js"></script>
 <script>
@@ -26,7 +26,7 @@
         //第一个实例
         table.render({
             elem: '#demo'
-            , height: 480
+            , height: 700
             , url: rootPath + '/getData' //数据接口
             , method: 'post'
             ,page: true //开启分页

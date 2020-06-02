@@ -1,77 +1,110 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow: auto" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>新增</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/boot.js"></script>
+    <!--<script src="js/boot.js"></script>-->
     <link rel="stylesheet" href="common/layui/css/layui.css">
-
+    <script src="common/layui/layui.js"></script>
 </head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">layui 后台布局</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">商品管理</a></li>
+            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul>
+    </div>
 
-<body>
-<div style="overflow:auto;height: 100%">
-    <div class="layui-upload" style="margin-top: 30px;margin-left: 50% ">
-        <button type="button" class="layui-btn" id="oneFile" data-multifile="false"><i class="layui-icon">&#xe67c;</i>上传文件</button>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll" id="layui-main-item">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">所有商品</a>
+                    <dl class="layui-nav-child">
+                        <dd><a data-url="./html/downupload.html;">上传下载</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="layui-load" style="margin-top: 30px;margin-left: 50% ">
-        <button type="button" class="layui-btn" id="downLoad" onclick="fileDownload()" data-multifile="false"><i class="layui-icon layui-icon-download-circle"></i>下载模板</button>
+
+    <div class="layui-body" >
+        <!-- 内容主体区域 -->
+        <div style="width:100%;height: 100%;">
+            <iframe name="main-iframe" id="main-iframe" src="./html/welcome.html" style="width:100%;height:100%;" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
     </div>
 </div>
-<div style="border: 1px solid red;height: 500px;width: 100%">
-   <iframe style="height: 500px;width: 100%" src="html/dataHtml.html"></iframe>
-</div>
-</body>
-<script src="common/layui/layui.all.js"></script>
 <script>
-function onCancel() {
-    CloseWindow("cancel");
-}
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
 
-function CloseWindow(action) {
-    if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action); else window.close();
-}
-
-function fileUpload() {
-    $('#oneFile').trigger('click');
-}
-
-function fileDownload() {
-    window.location.href = rootPath + '/fileDownload';
-}
-
-/*上传位置开始*/
-var messageidone;
-var fileData = {};
-$(document).ready(function () {
-    layui.use('upload', function () {
-        var upload = layui.upload;
-        var filetype = $("#oneFile").attr("data-type");
-        /*执行实例*/
-        var uploadInst = upload.render({
-            elem: '#oneFile', /*绑定元素*/ url: rootPath + '/fileUpload', accept: "file", /*指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）*/ multiple: false, /*是否允许多文件上传*/ exts: filetype ? filetype : "xls|xlsx", before: function (obj) {
-                obj.preview(function (index, file, result) {
-                    var fileName = file.name;
-                    $("#fileName").text(fileName);
-                });
-            }, done: function (res, index, upload) {
-                /*上传完毕回调*/
-                if (res) {
-                    if (res.status) {
-                        onCancel();
-                    } else {
-                    }
-                } else {/*	  openAlert("上传失败");*/
-                }
-            }, error: function () {/*请求异常回调*/
-            }
-        });
     });
-});
-
+</script>
+<script>
+    $(document).ready(function() {//事件委托代理
+        $('#layui-main-item').on('click', 'a', function() {
+            var url = $(this).data('url')
+            if (url) {
+                $("#main-iframe").attr('src', url);
+            }
+        })
+    })
 
 
 </script>
+</body>
 </html>
