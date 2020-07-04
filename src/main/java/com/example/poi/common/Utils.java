@@ -96,7 +96,9 @@ public class Utils {
     }
 
     /**
-     * android : 所有android设备 mac os : iphone ipad windows phone:Nokia等windows系统的手机
+     * android : 所有android设备
+     * mac os : iphone ipad
+     * windows phone:Nokia等windows系统的手机
      */
     public static String mobileOrPC(HttpServletRequest request) {
         String requestHeader = request.getHeader("User-Agent");
