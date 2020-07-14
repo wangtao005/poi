@@ -1,4 +1,4 @@
-package com.example.poi.common.config;
+package com.mypoi.poi.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.poi.entity;
+package com.mypoi.poi.entity;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.poi.common;
+package com.mypoi.poi.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

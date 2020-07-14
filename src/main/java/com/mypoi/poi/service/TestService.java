@@ -1,6 +1,6 @@
-package com.example.poi.service;
+package com.mypoi.poi.service;
 
-import com.example.poi.entity.Test;
+import com.mypoi.poi.entity.Test;
 
 import java.util.List;
 

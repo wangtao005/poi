@@ -1,13 +1,14 @@
-package com.example.poi.controller;
+package com.mypoi.poi.controller;
 
 
-import com.example.poi.common.ExcelFileUtils;
-import com.example.poi.entity.ReturnData;
-import com.example.poi.entity.Test;
-import com.example.poi.service.TestService;
+import com.mypoi.poi.common.ExcelFileUtils;
+import com.mypoi.poi.entity.ReturnData;
+import com.mypoi.poi.entity.Test;
+import com.mypoi.poi.service.TestService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,7 @@ import java.util.*;
 /**
  * 前端控制器
  */
+@CrossOrigin(origins = "*",maxAge = 3600,allowCredentials="true")//跨域*代表所有都能访问,如果设置还是提示跨域,需要设置allowCredentials=true,允许携带验证信息
 @Controller
 @RequestMapping("/")
 public class BaseController {
@@ -42,7 +44,6 @@ public class BaseController {
         model.addAttribute("name", "simonsfan");
         return "html/index";
     }
-
     @RequestMapping("/getData")
     @ResponseBody
     public ReturnData getData(HttpServletResponse response, HttpServletRequest request) {

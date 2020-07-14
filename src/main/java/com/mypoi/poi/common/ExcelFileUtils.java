@@ -1,4 +1,4 @@
-package com.example.poi.common;
+package com.mypoi.poi.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;

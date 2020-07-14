@@ -1,4 +1,4 @@
-package com.example.poi.common;
+package com.mypoi.poi.common;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;

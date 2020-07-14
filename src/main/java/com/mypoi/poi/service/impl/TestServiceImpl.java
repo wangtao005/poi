@@ -1,8 +1,8 @@
-package com.example.poi.service.impl;
+package com.mypoi.poi.service.impl;
 
-import com.example.poi.Dao.TestDao;
-import com.example.poi.entity.Test;
-import com.example.poi.service.TestService;
+import com.mypoi.poi.Dao.TestDao;
+import com.mypoi.poi.entity.Test;
+import com.mypoi.poi.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

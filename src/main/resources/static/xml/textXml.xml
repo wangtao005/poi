@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
-    <part id="text" entityPath="com.example.poi.entity.Test">
+    <part id="text" entityPath="com.mypoi.poi.entity.Test">
         <item id="id" name="id" value="ID" type="String" required="false"></item>
         <item id="name" name="name" value="姓名" type="String" required="true"></item>
         <item id="sex" name="sex" value="性别" type="String" required="false"></item>

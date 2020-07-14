@@ -1,4 +1,4 @@
-package com.example.poi;
+package com.mypoi.poi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
