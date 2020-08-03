@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
-    <part id="text" entityPath="com.mypoi.poi.entity.Test">
-        <item id="id" name="id" value="ID" type="String" required="false"></item>
-        <item id="name" name="name" value="姓名" type="String" required="true"></item>
-        <item id="sex" name="sex" value="性别" type="String" required="false"></item>
-        <item id="age" name="age" value="年龄" type="Integer" required="true"></item>
-        <item id="birthday" name="birthday" value="生日" type="Date" required="false"></item>
-        <item id="sign" name="sign" value="签名" type="String" required="false"></item>
-        <item id="experience" name="experience" value="积分" type="String" required="false"></item>
-        <item id="score" name="score" value="评分" type="String" required="false"></item>
-        <item id="classify" name="classify" value="职业" type="String" required="false"></item>
-        <item id="wealth" name="wealth" value="财富" type="String" required="false"></item>
-    </part>
+<part id="text" entityPath="com.mypoi.poi.entity.Test">
+    <item id="id" name="id" value="ID" type="String" required="false"></item>
+    <item id="name" name="name" value="姓名" type="String" required="true"></item>
+    <item id="sex" name="sex" value="性别" type="String" required="false"></item>
+    <item id="age" name="age" value="年龄" type="Integer" required="true"></item>
+    <item id="birthday" name="birthday" value="生日" type="Date" required="false"></item>
+    <item id="sign" name="sign" value="签名" type="String" required="false"></item>
+    <item id="experience" name="experience" value="积分" type="String" required="false"></item>
+    <item id="score" name="score" value="评分" type="String" required="false"></item>
+    <item id="classify" name="classify" value="职业" type="String" required="false"></item>
+    <item id="wealth" name="wealth" value="财富" type="String" required="false"></item>
+</part>
 </root>

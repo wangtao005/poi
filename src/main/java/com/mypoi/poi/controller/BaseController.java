@@ -1,11 +1,13 @@
 package com.mypoi.poi.controller;
 
 
+import com.mypoi.poi.PoiApplication;
 import com.mypoi.poi.common.ExcelFileUtils;
 import com.mypoi.poi.entity.ReturnData;
 import com.mypoi.poi.entity.Test;
 import com.mypoi.poi.service.TestService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,9 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -201,6 +203,55 @@ public class BaseController {
             map.put("fileName", fileName);
         }
         throw new RuntimeException("upload error");
+    }
+    /**
+     * 下载   windows还是linux 下载方式不一样
+     *
+     * @throws IOException
+     */
+    @RequestMapping("/downloadExcel")
+    public void downloadExcel(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        InputStream inputStream = null;
+        byte[] buffer = null;
+        if (System.getProperty("os.name").toLowerCase().startsWith("win")) {//判断系统是windows还是linux
+            URL url = new ClassPathResource("static/excelFile/easyxp.xls").getURL();
+            File file = new File(url.getFile());
+            inputStream = new FileInputStream(file);
+        } else {
+            InputStream inst = PoiApplication.class.getClassLoader().getResourceAsStream("static/excelFile/easyxp.xls");
+            buffer = new byte[inst.available()];
+            inst.read(buffer);
+            inst.close();
+            // 清空response
+            response.reset();
+        }
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/x-download;charset=utf-8");
+        response.setHeader("Content-disposition", URLEncoder.encode("easyxp", "UTF-8"));
+        //mime类型
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode("easyxp", "UTF-8"));
+        response.setHeader("Pragma", "No-cache");
+        //从内存中写出来
+        OutputStream outputStream = response.getOutputStream();
+        if(System.getProperty("os.name").toLowerCase().startsWith("win")){
+            int len = 0;
+            byte[] b = new byte[1024 * 100];
+            while ((len = inputStream.read(b)) != -1) {
+                outputStream.write(b, 0, len);
+            }
+        }else{
+            outputStream.write(buffer);
+        }
+        //释放inputstream
+        try {
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        outputStream.flush();
+        outputStream.close();
     }
 
 }
